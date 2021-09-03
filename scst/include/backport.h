@@ -2205,7 +2205,11 @@ static inline void scsi_build_sense(struct scsi_cmnd *scmd, int desc,
  */
 static inline struct request *scsi_cmd_to_rq(struct scsi_cmnd *scmd)
 {
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 0)
+	return scmd->request;
+#else
 	return blk_mq_rq_from_pdu(scmd);
+#endif
 }
 
 /*
