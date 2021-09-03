@@ -51,6 +51,7 @@
 #endif
 #include <rdma/ib_verbs.h>
 #include <scsi/scsi_cmnd.h>	/* struct scsi_cmnd */
+#include <scsi/scsi_eh.h>	/* scsi_build_sense_buffer() */
 struct scsi_target;
 #include <scsi/scsi_transport_fc.h> /* struct fc_bsg_job */
 #include <asm/unaligned.h>	/* get_unaligned_be64() */
@@ -2111,6 +2112,14 @@ static inline struct workqueue_struct *alloc_workqueue(const char *fmt,
  */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
 #define WQ_SYSFS 0
+#endif
+
+/*
+ * To do: backport alloc_ordered_workqueue(). See also commit 81dcaf6516d8
+ * ("workqueue: implement alloc_ordered_workqueue()"; v2.6.37).
+ */
+#ifndef alloc_ordered_workqueue
+#define alloc_ordered_workqueue(fmt, flags, args...) (-ENOMEM)
 #endif
 
 /* <rdma/ib_verbs.h> */
