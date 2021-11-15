@@ -452,14 +452,14 @@ debian/changelog: debian/changelog.in
 	mv "scst-$(VERSION).tar.xz" "$@"
 
 dpkg: ../scst_$(VERSION).orig.tar.gz
-	@if [ -z "$$DEBEMAIL" ]; then					\
-	  echo "Error: \$$DEBEMAIL has not been set";			\
-	  false;							\
-	fi &&								\
-	if [ -z "$$DEBFULLNAME" ]; then					\
-	  echo "Error: \$$DEBFULLNAME has not been set";		\
-	  false;							\
-	fi &&								\
+	#@if [ -z "$$DEBEMAIL" ]; then					\
+	#  echo "Error: \$$DEBEMAIL has not been set";			\
+	#  false;							\
+	#fi &&								\
+	#if [ -z "$$DEBFULLNAME" ]; then					\
+	#  echo "Error: \$$DEBFULLNAME has not been set";		\
+	#  false;							\
+	#fi &&								\
 	sed 's/%{scst_version}/$(VERSION)/'				\
 	  <debian/scst.dkms.in >debian/scst.dkms &&			\
 	output_files=(							\

@@ -74,7 +74,7 @@
 
 /* 8 byte ASCII Vendor */
 #define SCST_FIO_VENDOR			"SCST_FIO"
-#define SCST_BIO_VENDOR			"SCST_BIO"
+#define SCST_BIO_VENDOR			"NEONSAN"
 /* 4 byte ASCII Product Revision Level - left aligned */
 #define SCST_FIO_REV			"340 "
 
